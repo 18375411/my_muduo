@@ -5,13 +5,14 @@
 #include"noncopyable.hpp"
 
 //LOG_INFO("%s %d",arg1,arg2)
-#define LOG_INFO(Logmsgformat,...)\
+#define LOG_INFO(Logmsgformat, ...)\
 do\
 {\
     Logger &logger=Logger::instance();\
     logger.setLogLevel(INFO);\
     char buf[1024]={0};\
-    snprintf(buf,1024,Logmsgformat,##_VA_ARGS__);\
+    snprintf(buf,1024,Logmsgformat,##__VA_ARGS__);\
+    logger.log(buf);\
 }while(0)\
 
 #define LOG_ERROR(Logmsgformat,...)\
@@ -21,6 +22,7 @@ do\
     logger.setLogLevel(ERROR);\
     char buf[1024]={0};\
     snprintf(buf,1024,Logmsgformat,##_VA_ARGS__);\
+    logger.log(buf);\
 }while(0)\
 
 #define LOG_FATAL(Logmsgformat,...)\
@@ -30,6 +32,7 @@ do\
     logger.setLogLevel(FATAL);\
     char buf[1024]={0};\
     snprintf(buf,1024,Logmsgformat,##_VA_ARGS__);\
+    logger.log(buf);\
 }while(0)\
 
 #ifdef MUDEBUG
@@ -40,6 +43,7 @@ do\
         logger.setLogLevel(DEBUG);\
         char buf[1024]={0};\
         snprintf(buf,1024,Logmsgformat,##_VA_ARGS__);\
+        logger.log(buf);\
     }while(0)\
 #else
     #define LOG_DEBUG(Logmsgformat,...)

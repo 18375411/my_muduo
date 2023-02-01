@@ -9,18 +9,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(../)
 
 #库
-add_library(Timestamp ../Timestamp.cpp)
+add_library(InetAdress ../InetAdress.cpp)
 
 #test
-add_executable(testTimestamp testTimestamp.cpp)
-target_link_libraries(testTimestamp Timestamp)
+add_executable(testInetAdress testInetAdress.cpp)
+target_link_libraries(testInetAdress InetAdress)
 
 enable_testing()
  
 #注意这里
 add_test(
 	NAME catch_test 
-	COMMAND $<TARGET_FILE:testTimestamp> --success
+	COMMAND $<TARGET_FILE:testInetAdress> --success
 	)
 
 
