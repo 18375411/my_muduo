@@ -66,7 +66,7 @@ private:
     const int fd_;//Poller监听的对象
     int events_;//注册fd感兴趣的对象 epoll_ctl
     int revents_;//poller返回具体发生的事件
-    int index_;
+    int index_; //Channel在poller中的状态
 
     //跨线程生存状态监听
     std::weak_ptr<void> tie_;
