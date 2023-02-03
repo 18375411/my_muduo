@@ -33,18 +33,12 @@ void Channel::tie(const std::shared_ptr<void> &obj)
 void Channel::update()
 {
     //通过channel所属的EventLoop,调用poller相应的方法
-    /**
-     * @todo
-    */
-   //loop_->updateChannel(this);
+   loop_->updateChannel(this);
 }
 
 void Channel::remove()
 {
-    /**
-     * @todo
-    */
-   //loop_->removeChannel(this);
+   loop_->removeChannel(this);
 }
 
  void Channel::handleEvent(Timestamp receiveTime)

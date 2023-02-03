@@ -8,7 +8,10 @@
 class Channel;
 class EventLoop;
 
-class EpollPoller: Poller
+/**
+ * @attention 在私有继承和保护继承时基类指针(引用)无法指向派生类,因此EpollPoller需要public继承Poller
+*/
+class EpollPoller: public Poller
 {
 public:
     EpollPoller(EventLoop *loop);
