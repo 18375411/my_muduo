@@ -13,7 +13,7 @@ EventLoop* CheckLoopNotNull(EventLoop *loop)
 TcpServer::TcpServer(EventLoop *loop
             ,const InetAdress &listenAddr
             ,const std::string nameArg
-            ,Option option=kNoReusePort )
+            ,Option option)
             :loop_(CheckLoopNotNull(loop))
             ,ipPort_(listenAddr.toIpPort())
             ,name_(nameArg)
