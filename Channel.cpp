@@ -13,7 +13,7 @@ Channel::Channel(EventLoop *loop,int fd)
     ,fd_(fd)
     ,events_(0)
     ,revents_(0)
-    ,index_(-1)
+    ,index_(-1)//kNew
     ,tied_(false) 
 {
 }

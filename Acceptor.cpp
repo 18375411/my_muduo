@@ -43,8 +43,8 @@ Acceptor::~Acceptor()
 void Acceptor::listen()
 {
     lisenning_=true;
-    acceptSocket_.listen();
-    acceptChannel_.enbleReading();
+    acceptSocket_.listen();//创建监听队列
+    acceptChannel_.enbleReading();//设置listenfd的感兴趣事件，再注册到epoll上 Channel->enbleReading->update ==》 EventLoop->updateChannel ==》Poller->updateChannel ==》epoll_ctl 
 
 }
 
