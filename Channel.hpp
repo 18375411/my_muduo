@@ -28,7 +28,8 @@ public:
     void setCloseCallback(EventCallback cb){closeCallback_=std::move(cb);}
     void setErrorCallback(EventCallback cb){errorCallback_=std::move(cb);}
 
-    //防止当channel被手动remove掉时，channel还在执行回调操作
+    //被调用在TcpConnection::connectEstablished()中，这是由于channel中设置的回调都是TcpConnection中的成员
+    //如果TcpConnection不存在了，再执行回调将会导致未知结果，因此需要weak_ptr监听TcpConnection的生存状态
     void tie(const std::shared_ptr<void> &);
 
     int fd() const{return fd_;}

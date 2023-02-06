@@ -50,7 +50,7 @@ void Channel::remove()
         }
     }
     else{
-        handleEventWithGuard(receiveTime);
+        handleEventWithGuard(receiveTime);//acceptor中的channel没有tie(因为acceptor不会给到用户手中，而TcpConnction会被暴露)
     }
  }
 

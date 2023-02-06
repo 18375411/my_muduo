@@ -108,6 +108,7 @@ public:
 
     //从fd上读取数据
     ssize_t readfd(int fd,int *saveErrno);
+    ssize_t writefd(int fd,int *saveErrno);
 private:
     char* begin()
     {

@@ -31,7 +31,7 @@ EpollPoller::~EpollPoller()
  *             EventLoop
  *   ChannelList           Poller
  *                     ChannelMap <fd,Channel*>
- *   所有Channel         该Poller中的Channel
+ *   activeChannels         该Poller中的Channel
 */
 //用index来区分对Channel的操作，调用update()
 void EpollPoller::updateChannel(Channel* channel)
@@ -151,3 +151,9 @@ void EpollPoller::update(int operation, Channel *channel)
     }
 
 }
+
+/***
+ * 区分kDeleted和remove
+ * 1.remove 直接从ChannelMap中删除该Channel，channel的状态被设置为kNEW
+ * 2.kDeleted:该channel仍然存在于ChannelMap中，只不过对所有事件不感兴趣
+*/
