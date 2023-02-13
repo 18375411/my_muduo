@@ -10,6 +10,7 @@
 #include"EventLoopThreadPool.hpp"
 #include"TcpConnection.hpp"
 #include"Callbacks.hpp"
+#include"Buffer.hpp"
 
 #include<functional>
 #include<string>

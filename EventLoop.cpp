@@ -18,6 +18,7 @@ const int kPollTimeMs=10000;
 //创建wakeupfd，用来notify subreactor处理新来的channel
 int createEventfd()
 {
+    //专门用于事件通知的文件描述符.eventfd 是一个计数相关的fd。计数不为零是有可读事件发生，read 之后计数会清零，write 则会递增计数器。
     int evtfd=::eventfd(0,EFD_NONBLOCK|EFD_CLOEXEC);
     if(evtfd<0)
     {
@@ -30,7 +31,7 @@ EventLoop::EventLoop()
     :looping_(false)
     ,quit_(false)
     ,callingPendingFuntors_(false)
-    ,threadId_(CurrentThead::tid())
+    ,threadId_(CurrentThread::tid())
     ,poller_(Poller::newDefaultPoller(this))
     ,wakeupFd_(createEventfd())
     ,wakeupChannel_(new Channel(this,wakeupFd_))

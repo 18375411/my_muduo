@@ -1,6 +1,6 @@
 #pragma once
 
-namespace CurrentThead
+namespace CurrentThread
 {
     extern __thread int t_cathedTid;
     

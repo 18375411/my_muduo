@@ -34,7 +34,7 @@ void Thread::start()
     //开启线程
     thread_=std::shared_ptr<std::thread>(new std::thread([&](){
         //获取线程tid
-        tid_=CurrentThead::tid();
+        tid_=CurrentThread::tid();
 
         sem_post(&sem);
         //新线程专门执行该线程函数

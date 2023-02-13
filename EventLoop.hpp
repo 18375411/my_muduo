@@ -39,7 +39,7 @@ public:
     void removeChannel(Channel* channel);
     bool hasChannel(Channel* channel);
 
-    bool isInLoopThread() const{ return threadId_==CurrentThead::tid();}//当前线程是否在创建自己的线程中
+    bool isInLoopThread() const{ return threadId_==CurrentThread::tid();}//当前线程是否在创建自己的线程中
 
 
 private:
